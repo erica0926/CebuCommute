@@ -16,8 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users.views import passenger_register, passenger_login, passenger_dashboard, driver_register, driver_login, \
+    driver_dashboard, validate_ticket
+from tickets.views import buy_ticket
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
+    path('registration/', passenger_register, name='passenger_register'),
+    path('login/', passenger_login, name='passenger_login'),
+    path('passenger/', passenger_dashboard, name='passenger_dashboard'),
+
+    path('driver_registration/', driver_register, name='driver_register'),
+    path('driver_login/', driver_login, name='driver_login'),
+    path('driver_dashboard/', driver_dashboard, name='driver_dashboard'),
+
+    path("buy-ticket/", buy_ticket, name="buy_ticket"),
+    path("validate-ticket/<int:ticket_id>/", validate_ticket, name="validate_ticket"),
 ]

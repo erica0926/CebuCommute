@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Driver Page{% endblock %}
+
+{% block header %}
+<h1>Driver Dashboard</h1>
+{% endblock %}
+
+{% block main %}
+<h2>Welcome, Driver!</h2>
+
+<p>You are successfully logged in.</p>
+
+<p>User ID: {{ request.session.user_id }}</p>
+<p>Username: {{ user.username }}</p>
+<p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+<p>Jeeps owned: {{ jeep.jeep_id }} - {{ jeep.route.route_id }} {{ jeep.route }}</p>
+<p>Max Capacity: {{ jeep.max_capacity }}</p>
+
+<hr>
+
+<h3>Tickets</h3>
+
+{% for ticket in tickets %}
+<div style="margin-bottom:10px;">
+    Passenger: {{ ticket.passenger.user.username }} <br>
+    Fare: ₱{{ ticket.fare }} <br>
+    Status: {{ ticket.status }}
+    <form method="POST"
+          action="{% url 'validate_ticket' ticket.id %}"
+          onsubmit="return confirmToggle('{{ ticket.status }}')">
+        {% csrf_token %}
+
+        {% if ticket.status == "active" %}
+        <button type="submit">✔ Validate</button>
+        {% else %}
+        <button type="submit">↩ Unvalidate</button>
+        {% endif %}
+    </form>
+</div>
+<hr>
+{% empty %}
+<p>No tickets found.</p>
+{% endfor %}
+
+
+<a href="{% url 'driver_login' %}">Logout</a>
+
+<script>
+    function confirmToggle(status) {
+        if (status === "used") {
+            return confirm("Are you sure you want to make this ticket active again?");
+        }
+        return true;
+    }
+</script>
+{% endblock %}

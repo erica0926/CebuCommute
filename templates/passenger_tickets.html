@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Passenger Page{% endblock %}
+
+{% block header %}
+<h1>Passenger Dashboard</h1>
+{% endblock %}
+
+{% block main %}
+<h2>Welcome, Passenger!</h2>
+
+<p>You are successfully logged in.</p>
+
+<p>User ID: {{ request.session.user_id }}</p>
+<p>Username: {{ user.username }}</p>
+<p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+<p>User Type: {{ user_type }}</p>
+
+<hr>
+
+<h3>Tickets</h3>
+
+<ul>
+    {% for ticket in tickets %}
+    <li>
+        Jeep: {{ ticket.jeep.jeep_id }} |
+        Fare: ₱{{ ticket.fare }} |
+        Status: {{ ticket.status }}
+    </li>
+    {% empty %}
+    <li>No tickets yet.</li>
+    {% endfor %}
+</ul>
+
+<br>
+<a href="{% url 'passenger_login' %}">Logout</a>
+
+{% endblock %}

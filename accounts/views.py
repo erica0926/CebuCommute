@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Users
+from .models import Passenger
 from django.db import IntegrityError
 
 
@@ -8,12 +8,13 @@ from django.db import IntegrityError
 def index(request):
     return render(request, 'index.html')
 
+
 def add_user(request):
     error = None
 
     if request.method == 'POST':
         try:
-            Users.objects.create(
+            Passenger.objects.create(
                 first_name=request.POST.get('first_name'),
                 last_name=request.POST.get('last_name'),
                 username=request.POST.get('username'),
@@ -28,3 +29,8 @@ def add_user(request):
 
     return render(request, 'addUser.html', {'error': error})
 
+
+def user_list(request):
+    passengers = Passenger.objects.all()
+
+    return render(request, 'userList.html', {'passengers': passengers})

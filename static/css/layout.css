@@ -1,0 +1,19 @@
+#wrapper {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header,
+nav,
+main,
+footer {
+    display: block;
+}
+
+
+#index {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}

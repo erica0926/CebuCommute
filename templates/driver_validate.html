@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Buy Ticket{% endblock %}
+
+{% block header %}
+<h1>Buy Ticket</h1>
+{% endblock %}
+
+{% block main %}
+<h2>Active Tickets</h2>
+
+{% for ticket in tickets %}
+<p>
+    {{ ticket.passenger.user.username }} - {{ ticket.status }}
+
+    <a href="{% url 'mark_ticket_used' ticket.id %}">
+        Validate
+    </a>
+</p>
+{% endfor %}
+{% endblock %}

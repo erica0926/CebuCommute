@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block header %}
+<h1>Cebu Commute App</h1>
+<h2>continue as:</h2>
+{% endblock %}
+
+{% block main %}
+<div id="index">
+    <a href="{% url 'passenger_register' %}" class="btn btn-wd-6">Passenger</a>
+    <a href="{% url 'driver_register' %}" class="btn btn-wd-6">Driver</a> <!-- url 'driver_login' -->
+</div>
+{% endblock %}

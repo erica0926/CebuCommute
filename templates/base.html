@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Title {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+          {% block header %}
+          {% endblock %}
+        </header>
+
+        <nav>
+            {% block nav %}
+            {% endblock %}
+        </nav>
+
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
+
+        <footer>
+            Copyright &copy; 2026 My Django App<br>
+            <a href="mailto:ericamarie@aniga.com">ericamarie@aniga.com</a>
+        </footer>
+    </div>
+</body>
+</html>

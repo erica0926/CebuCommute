@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    line-height: 200%;
+}
+
+nav {
+    text-align: center;
+    font-weight: bold;
+}
+
+footer {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: center;
+}
